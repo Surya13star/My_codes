@@ -1,0 +1,42 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+
+int main() {
+    // Write C++ code here
+    int n,ctr,ctr_ind,max=0;
+    
+    std::cout << "enter the no. of elements ";
+    std::cin >>n;
+    int a[n];
+    for (int i=0;i<n;i++)
+    {
+        std::cout<<"enter the element "<<i+1;
+        std::cin >> a[i];
+        
+    }
+    for(int i=0; i<n;i++)
+    {
+        ctr=0;
+        
+        for(int j=0; j<n;j++)
+        {
+            if(a[i]==a[j])
+            {
+                ctr+=1;
+            }
+            
+        }
+        if (ctr>max)
+        {
+            max=ctr;
+            ctr_ind=i;
+        }
+    }
+    std::cout<<"The most freequent element is "<<a[ctr_ind];
+    
+    
+    
+    
+
+    return 0;
+}
