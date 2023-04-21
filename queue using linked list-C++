@@ -1,0 +1,109 @@
+// Online C++ compiler to run C++ program online
+#include<iostream>
+
+struct node
+{
+    int value;
+    struct node *link;
+};
+
+struct node *head;
+struct node *rear;
+struct node *temp;
+int x;
+int count=0,ch;
+
+void enqueue()
+{
+    std::cout<<"enter the element to enqueue";
+    std::cin>>x;
+    struct node *newnode = (struct node *)malloc(sizeof(struct node));
+    newnode->value = x;
+    if (head==NULL)
+    {
+        head=newnode;
+        rear=head;
+    }
+    else
+    {
+       
+        rear->link=newnode;
+        rear=rear->link;
+    }
+}
+void dequeue()
+{
+    if(rear==NULL)
+    {
+        std::cout<<"the queue is empty";
+        
+        return;
+    }
+    std::cout<<head->value;
+    head=head->link;
+    std::cout<<'\n';
+}
+
+void display()
+{
+    
+    temp=head;
+    if(head==NULL)
+    {
+        std::cout<<"the queue is empty";
+    }
+    while(temp!=NULL)
+    {
+        std::cout<<temp->value<<" ";
+        temp=temp->link;
+    }
+    std::cout<<'\n';
+}
+
+
+int main()
+{
+    int n;
+    //std::cout<<"enter the number of elements in the linked list";
+    //std::cin>>n;
+    while(count==0)
+    {
+        std::cout<<"enter 1 to enqueue/// 2 to dequeue /// 3 to display ////4 to exit";
+        std::cin>>ch;
+        switch(ch)
+        {
+            case 1:
+            {
+                enqueue();
+                break;
+            }
+            case 2:
+            {
+                dequeue();
+                break;
+            }
+            case 3:
+            {
+                display();
+                break;
+            }
+            case 4:
+            {
+                count+=1;
+                break;
+            }
+        }
+        
+    }
+    
+    for (int i=0;i<n;i++)
+    {
+        enqueue();
+    }
+    display();
+    dequeue();
+    display();
+    return 0;
+    
+    
+}
