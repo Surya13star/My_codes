@@ -1,0 +1,86 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+int n, ch,front=-1,rear=-1;
+int a[100];
+void enqueue()
+{
+    int x;
+    std::cout<<"enter the number to enqueue";
+    std::cin>>x;
+    
+    if (front==-1)
+    {
+        front++;
+    }
+    if (rear+1>=n)
+    {
+        std::cout<<"the queue is full";
+    }
+    else
+    {
+        rear++;
+        a[rear]=x;
+    }
+    
+}
+
+void dequeue()
+{
+    if (front>rear)
+    {
+        std::cout<<"the queue is empty";
+    }
+    else
+    {
+        std::cout<<a[front];
+        front+=1;
+        
+    }
+    
+}
+void display()
+{
+    for(int i=front;i<=rear;i++)
+    {
+        std::cout<<a[i]<<" " ;
+    }
+}
+
+int main() {
+    // Write C++ code here
+    //int n,ch,front=-1,rear=-1;
+    std::cout << "Enter the number of elements of the array";
+    std::cin>>n;
+    
+    int count=0;
+    while(count==0)
+    {
+        std::cout<<"enter 1 for enqueue/// enter 2 for dequeue //// enter 3 for exit";
+        std::cin >>ch;
+        switch(ch)
+        {
+            case 1:
+            {
+                enqueue();
+                break;
+            }
+            case 2:
+            {
+                dequeue();
+                break;
+            }
+            case 3:
+            {
+                display();
+                break;
+            }
+            default:
+            {
+                count+=1;
+                break;
+            }
+        }
+    }
+
+    return 0;
+}
