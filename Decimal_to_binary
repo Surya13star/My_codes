@@ -1,0 +1,39 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main() {
+    int n=17;
+    int r,p=0,sum=0,count=0;
+    while (n>0)
+    {
+        r = n % 2;
+        n = n/2;
+        if (r == 1){
+            sum+=1*(pow(10,p));
+            p++;
+        }
+        else
+        {
+            sum+=2*(pow(10,p));
+            p++;
+        }
+        count++;
+        
+    }
+    cout<<sum<<"\n";
+    int a[1000],n1=sum,r1=0,ind=0;
+    while(n1!=0)
+    {
+        r1=n1%10;
+        n1/=10;
+        if(r1==2)
+            a[ind++]=0;
+        else
+            a[ind++]=r;
+    }
+    for(int i=ind-1;i>=0;i--)
+    {
+        cout<<a[i];
+    }
+}
