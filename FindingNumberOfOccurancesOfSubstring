@@ -1,0 +1,60 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    // Write C++ code here
+    std::cout << "Hello world!";
+    std::string a;
+    std::string b;
+    cout<<"enter the string a"<<'\n';
+    cin>>a;
+    cout<<"enter the string b"<<'\n';
+    cin>>b;
+    int n = a.length();
+    int count = 0;
+    int count1=0;
+    int k=0;
+    int i=0;
+    int c=0;
+    int s[n];
+    int ind;
+    int l;
+    cout<<n<<'\n';
+    while(i<a.length())
+    {
+        cout<<i<<'\n';
+        l=i;
+        for(int j=0;j<b.length();j++,l++)
+        {
+            if(a[l]!=b[j])
+            {
+                c++;
+                
+                i++;
+                break;
+            }
+           
+        }
+        if(c==0)
+        {
+            s[k]=i;
+            i++;
+            k++;
+            count++;
+            
+        }
+        //cout<<i<<'\n';
+        
+        c=0;
+        
+    }
+    
+    cout<<"the number of times the string b occurs in a is"<<" "<<count<<'\n';
+    //for(int i=0; i< sizeof(s);i++)
+    //{
+        //cout<<s[i]<<'\n';
+    //}
+    return 0;
+}
