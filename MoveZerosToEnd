@@ -1,0 +1,28 @@
+public static int[] moveZerosToEnd(int[] arr){
+        
+        int z = 0;
+        int nz = 0;
+        int j=0;
+        
+        while(j<arr.length){
+            if(arr[j]!=0 && arr[z]==0){
+                int temp = arr[j];
+                arr[j] = arr[z];
+                arr[z] = temp;
+                j++;
+                z++;
+            }
+            else if(arr[j]==0){
+                j++;
+            }
+            else{
+                j+=1;
+                z+=1;
+            }
+        }
+        System.out.println(j);
+        System.out.println(z);
+        
+        return arr;
+        
+    }
