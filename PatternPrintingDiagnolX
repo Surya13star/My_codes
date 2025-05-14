@@ -1,0 +1,32 @@
+import java.util.*;
+
+class Main {
+    
+    
+    public static void  pattern(String s){
+        
+        int n = s.length();
+        
+        for(int i=0;i<n;i++){
+            int row = i;
+            if(row>n/2){
+                row = n-i-1;
+            }
+            for(int j=0;j<n;j++){
+                if(j==row||j==n-row-1){
+                    System.out.print(s.charAt(j));
+                }
+                else{
+                    System.out.print(" ");
+                }
+            }
+            System.out.println(" ");
+        }
+    }
+    public static void main(String[] args) {
+        System.out.println("surya is living in abundace");
+        pattern("geeks");
+        
+    }
+}
+
