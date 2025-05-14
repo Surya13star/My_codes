@@ -1,0 +1,43 @@
+import java.util.*;
+
+class Main {
+    
+    public static int[] sortArray(int[] nums, boolean even, boolean descending){
+        
+        int count = 0;
+        // Fix: increment by 2
+        for(int i = even ? 0 : 1; i < nums.length; i += 2){
+            count += 1;
+        }
+        
+        Integer[] temp = new Integer[count];
+        int ind = 0;
+        
+        // Collect elements at even or odd indices
+        for(int i = even ? 0 : 1; i < nums.length; i += 2){
+            temp[ind++] = nums[i];
+        }
+        
+        // Sort accordingly
+        Arrays.sort(temp, descending ? Comparator.reverseOrder() : Comparator.naturalOrder());
+        
+        // Put them back
+        int j = 0;
+        for(int i = even ? 0 : 1; i < nums.length; i += 2){
+            nums[i] = temp[j++];
+        }
+        return nums;
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = {13, 2, 4, 15, 12, 10, 5};
+        
+        // Sort even indices in descending
+        sortArray(arr, true, true);
+        // Sort odd indices in ascending
+        sortArray(arr, false, false);
+        
+        System.out.println(Arrays.toString(arr));
+    }
+}
+
