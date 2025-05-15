@@ -1,0 +1,36 @@
+class Main {
+    
+    public static int findSubString(String a, String b){
+        
+        int start = 0;
+        int end = 0;
+        int count = 0;
+        int f = 0;
+        
+        while(start<a.length() && end<a.length()){
+            
+            if(a.charAt(end)==b.charAt(f)){
+                end++;
+                f++;
+                count+=1;
+                if(count==b.length()){
+                    return start;
+                }
+            }
+            else{
+                end++;
+                start = end;
+                count = 0;
+                f = 0;
+            }
+        }
+        return -1;
+    }
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        String x = "surya";
+        String y = "ry";
+        int res = findSubString(x,y);
+        System.out.print(res);
+    }
+}
