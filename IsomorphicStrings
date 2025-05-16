@@ -1,0 +1,47 @@
+import java.util.*;
+
+
+class Main {
+    
+    public static boolean isomorphic(String a, String b){
+        
+        if(a.length()!=b.length()){
+            return false;
+        }
+        
+        Map<Character,Character> map1 = new HashMap<>();
+        Map<Character,Character> map2 = new HashMap<>();
+        
+        for(int i =0; i<a.length(); i++){
+            
+            char s = a.charAt(i);
+            char t = b.charAt(i);
+            
+            if(map1.containsKey(s)){
+                if (map1.get(s)!=t){
+                    return false;
+                }
+            }
+            else{
+                map1.put(s,t);
+            }
+            if (map2.containsKey(t)){
+                if(map2.get(t)!=s){
+                    return false;
+                }
+            }
+            else{
+                map2.put(t,s);
+            }
+        }
+        return true;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        String a = "abba";
+        String b = "cddc";
+        Boolean result = isomorphic(a,b);
+        System.out.println(result);
+    }
+}
