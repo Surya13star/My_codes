@@ -1,0 +1,31 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+
+import java.util.*;
+
+
+class Main {
+    
+    public static String reverseSentence(String str){
+        
+        if(!str.contains(" ")){
+            return str;
+        }
+        
+        int space_index = str.indexOf(" ");
+        
+        String first = str.substring(0,space_index);
+        String remaining = str.substring(space_index+1);
+        String space = " ";
+        return reverseSentence(remaining)+space+first;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        String a ="I love you";
+        System.out.println(a);
+        String result = reverseSentence(a);
+        System.out.println(result);
+    }
+}
