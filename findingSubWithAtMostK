@@ -1,0 +1,44 @@
+import java.util.*;
+
+
+class Main {
+    
+    public static int findingSubWithAtMostK(String s){
+        int l = 0;
+        int r = 0;
+        int k = 2;
+        int maxlen = 0;
+        Map<Character,Integer> map = new HashMap<>();
+        while(r<s.length()){
+            char cl = s.charAt(l);
+            char ch = s.charAt(r);
+            if(!map.containsKey(ch)){
+                map.put(ch,1);
+            }
+            else{
+                map.put(ch,map.get(ch)+1);
+            }
+            if(map.size()>k){
+                map.put(cl,map.get(cl)-1);
+                if(map.get(cl)==0){
+                    map.remove(cl);
+                }
+                l++;
+            }
+            if(maxlen<r-l+1){
+                maxlen = r-l+1;
+            }
+            r++;
+        }
+        return maxlen;
+        
+    }
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        //String s = "aabbbccd";
+        String s = "aaaaaaaaaaaabcgh";
+        int res = findingSubWithAtMostK(s);
+        System.out.println(res);
+        
+    }
+}
