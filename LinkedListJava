@@ -1,0 +1,144 @@
+public class Main {
+
+    // Static inner Node class
+    public static class Node {
+        int data;
+        Node next;
+
+        public Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    // Static inner LinkedList class
+    public static class LinkedList {
+        Node head;
+
+        // Insert node at the end
+        public void insertNode(int data) {
+            Node newNode = new Node(data);
+
+            if (head == null) {
+                head = newNode;
+            } else {
+                Node temp = head;
+                while (temp.next != null) {
+                    temp = temp.next;
+                }
+                temp.next = newNode;
+            }
+        }
+
+        // Print linked list
+        public void printLinkedList() {
+            Node temp = head;
+            while (temp != null) {
+                System.out.print(temp.data + " -> ");
+                temp = temp.next;
+            }
+            System.out.println("null");
+        }
+
+        // Delete a node with a given value
+        public void deleteElement(int data) {
+            Node temp = head;
+            Node prev = null;
+
+            // If head needs to be deleted
+            if (temp != null && temp.data == data) {
+                head = head.next;
+                return;
+            }
+
+            // Traverse to find the node
+            while (temp != null && temp.data != data) {
+                prev = temp;
+                temp = temp.next;
+            }
+
+            // If not found
+            if (temp == null) {
+                System.out.println("Element " + data + " not found.");
+                return;
+            }
+
+            // Delete the node
+            prev.next = temp.next;
+        }
+
+        // Reverse the linked list
+        public void reverseLinkedList() {
+            Node prev = null;
+            Node curr = head;
+            Node next = null;
+
+            while (curr != null) {
+                next = curr.next;
+                curr.next = prev;
+                prev = curr;
+                curr = next;
+            }
+
+            head = prev;
+        }
+        public void removeNthElementFromEnd(int n){
+            //Node slow = head;
+           // Node fast = head;
+            //l-n+1 to delete from first if we have to delete nth element from last
+            //int deleteElement;
+            
+            if(head==null || n<=0 ){
+                return;
+            }
+            
+            Node dummy = new Node(0);
+            dummy.next = head;
+            Node slow = dummy;
+            Node fast = dummy;
+            
+           for(int i=0; i<n; i++){
+               if(fast.next==null){
+                   return;
+               }
+               fast=fast.next;
+           }
+           while(fast.next!=null){
+               slow = slow.next;
+               fast = fast.next;
+           }
+           slow.next = slow.next.next;
+           head= dummy.next;
+            
+        }
+    }
+
+    public static void main(String[] args) {
+        LinkedList a = new LinkedList();
+
+        // Insert nodes
+        a.insertNode(10);
+        a.insertNode(20);
+        a.insertNode(30);
+        a.insertNode(40);
+
+        System.out.println("Original List:");
+        a.printLinkedList();  // 10 → 20 → 30 → 40 → null
+
+        // Delete a node
+        //a.deleteElement(20);
+        //System.out.println("After deleting 20:");
+        a.printLinkedList();  // 10 → 30 → 40 → null
+
+        // Reverse the list
+        a.reverseLinkedList();
+        System.out.println("After reversing:");
+        a.printLinkedList();  // 40 → 30 → 10 → null
+        System.out.println("After deleting nth node from end");
+        a.removeNthElementFromEnd(2);
+        a.printLinkedList();
+        
+        
+        
+    }
+}
